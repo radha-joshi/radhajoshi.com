@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react';
+import OchreWindow from './OchreWindow';
 
 type RectDef = [number, number, number, number];
 
@@ -82,6 +83,16 @@ export default function BookshelfLight() {
   const [isPurring, setIsPurring] = useState(false);
   const [isCatHovered, setIsCatHovered] = useState(false);
   const purrTimeout = useRef<number | null>(null);
+  const [isOchrePressed, setIsOchrePressed] = useState(false);
+  const [isOchreWindowOpen, setIsOchreWindowOpen] = useState(false);
+
+  const handleOchreBookClick = () => {
+  setIsOchrePressed(true);
+  window.setTimeout(() => {
+    setIsOchrePressed(false);
+    setIsOchreWindowOpen(true);
+  }, 160);
+  };
 
   const bookHover =
     'cursor-pointer transition-transform duration-150 ease-out hover:-translate-y-3';
@@ -134,7 +145,16 @@ export default function BookshelfLight() {
           <rect x="1008" y="376" width="5" height="10" fill="#7D4822" />
         </g>
 
-        <g id="ochre-book" className={bookHover}>
+        <g
+          id="ochre-book"
+          onClick={handleOchreBookClick}
+          style={{ transformBox: 'fill-box', transformOrigin: 'bottom center' }}
+          className={`cursor-pointer transition-transform duration-150 ease-out ${
+            isOchrePressed
+              ? 'translate-y-0 scale-y-90 scale-x-95'
+              : 'hover:-translate-y-3'
+          }`}
+        >
           <rect x="40" y="86" width="10" height="220" fill="#2B2833" />
           <rect x="50" y="76" width="75" height="10" fill="#2B2833" />
           <rect x="125" y="86" width="10" height="220" fill="#2B2833" />
@@ -447,6 +467,13 @@ export default function BookshelfLight() {
           </g>
         </g>
       </svg>
+      <OchreWindow
+        isOpen={isOchreWindowOpen}
+        onClose={() => setIsOchreWindowOpen(false)}
+        title="ochre-book"
+      >
+        {/* Your custom content here */}
+      </OchreWindow>
     </div>
   );
 }
