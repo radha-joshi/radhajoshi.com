@@ -17,7 +17,7 @@ function PixelLetter({
 }) {
   return (
     <g id={id}>
-      <g stroke="#2B2833" strokeWidth={10} strokeLinejoin="miter" fill="none">
+      <g stroke="#2B2833" strokeWidth={18} strokeLinejoin="miter" fill="none">
         {rects.map(([x, y, w, h], i) => (
           <rect key={`o-${i}`} x={x} y={y} width={w} height={h} />
         ))}
@@ -61,6 +61,7 @@ function playLampClick(turningOn: boolean) {
 
 export default function BookshelfDark() {
   const [isLampOn, setIsLampOn] = useState(true);
+  const [isLampHovered, setIsLampHovered] = useState(false);
 
   const bookHover =
     'cursor-pointer transition-transform duration-150 ease-out hover:-translate-y-3';
@@ -74,7 +75,7 @@ export default function BookshelfDark() {
   return (
     <div className="w-full max-w-2xl mx-auto select-none">
       <svg
-        viewBox="0 0 1000 400"
+        viewBox="0 0 1120 400"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         shapeRendering="crispEdges"
@@ -85,7 +86,7 @@ export default function BookshelfDark() {
         aria-label="Pixel art bookshelf with books, radha, and a desk lamp"
       >
         {isLampOn && (
-          <g id="lamp-glow" className="pointer-events-none">
+          <g id="lamp-glow" className="pointer-events-none" transform="translate(90, 0)">
             <rect x="720" y="106" width="256" height="216" fill="#F7DC88" fillOpacity="0.08" />
             <rect x="748" y="130" width="204" height="184" fill="#F7DC88" fillOpacity="0.12" />
             <rect x="780" y="158" width="144" height="148" fill="#F7DC88" fillOpacity="0.16" />
@@ -94,36 +95,33 @@ export default function BookshelfDark() {
         )}
 
         <g id="shelf">
-          <rect x="23" y="306" width="920" height="10" fill="#2B2833" />
+          <rect x="23" y="306" width="1040" height="10" fill="#2B2833" />
           <rect x="13" y="316" width="10" height="43" fill="#2B2833" />
-          <rect x="23" y="359" width="920" height="9" fill="#2B2833" />
-          <rect x="943" y="316" width="10" height="43" fill="#2B2833" />
+          <rect x="23" y="359" width="1040" height="9" fill="#2B2833" />
+          <rect x="1063" y="316" width="10" height="43" fill="#2B2833" />
           <rect x="63" y="368" width="10" height="18" fill="#2B2833" />
-          <rect x="843" y="368" width="10" height="18" fill="#2B2833" />
+          <rect x="963" y="368" width="10" height="18" fill="#2B2833" />
           <rect x="73" y="386" width="40" height="10" fill="#2B2833" />
-          <rect x="853" y="386" width="40" height="10" fill="#2B2833" />
+          <rect x="973" y="386" width="40" height="10" fill="#2B2833" />
           <rect x="113" y="368" width="10" height="18" fill="#2B2833" />
-          <rect x="893" y="368" width="10" height="18" fill="#2B2833" />
-          <rect x="23" y="315" width="920" height="44" fill="#9C5F30" />
-          <rect x="23" y="315" width="920" height="4" fill="#C58C63" />
-          <rect x="23" y="350" width="920" height="9" fill="#7D4822" />
-          <rect x="733" y="333" width="125" height="5" fill="#7D4822" />
-          <rect x="668" y="333" width="25" height="5" fill="#7D4822" />
-          <rect x="853" y="328" width="90" height="5" fill="#7D4822" />
+          <rect x="1013" y="368" width="10" height="18" fill="#2B2833" />
+          <rect x="23" y="315" width="1040" height="44" fill="#9C5F30" />
+          <rect x="23" y="315" width="1040" height="4" fill="#C58C63" />
+          <rect x="23" y="350" width="1040" height="9" fill="#7D4822" />
+          <rect x="853" y="333" width="125" height="5" fill="#7D4822" />
+          <rect x="788" y="333" width="25" height="5" fill="#7D4822" />
+          <rect x="973" y="328" width="90" height="5" fill="#7D4822" />
           <rect x="23" y="329" width="200" height="5" fill="#7D4822" />
           <rect x="223" y="334" width="114" height="5" fill="#7D4822" />
           <rect x="355" y="334" width="20" height="5" fill="#7D4822" />
-          <rect x="693" y="333" width="8" height="5" fill="#8D5429" />
+          <rect x="813" y="333" width="8" height="5" fill="#8D5429" />
           <rect x="348" y="334" width="7" height="5" fill="#8D5429" />
           <rect x="73" y="366" width="40" height="20" fill="#9C5F30" />
           <rect x="73" y="366" width="40" height="11" fill="#7D4822" />
           <rect x="106" y="376" width="7" height="10" fill="#8D5429" />
-          <rect x="853" y="366" width="40" height="20" fill="#9C5F30" />
-          <rect x="853" y="366" width="40" height="10" fill="#7D4822" />
-          <rect x="888" y="376" width="5" height="10" fill="#7D4822" />
-          {isLampOn && (
-            <rect x="772" y="315" width="156" height="4" fill="#F7DC88" fillOpacity="0.65" />
-          )}
+          <rect x="973" y="366" width="40" height="20" fill="#9C5F30" />
+          <rect x="973" y="366" width="40" height="10" fill="#7D4822" />
+          <rect x="1008" y="376" width="5" height="10" fill="#7D4822" />
         </g>
 
         <g id="ochre-book" className={bookHover}>
@@ -201,14 +199,14 @@ export default function BookshelfDark() {
           color="#D49443"
           highlightColor="#EBC369"
           rects={[
-            [296, 210, 24, 96],
-            [320, 222, 12, 12],
-            [332, 210, 24, 24],
+            [302, 210, 24, 96],
+            [326, 222, 12, 12],
+            [338, 210, 24, 24],
           ]}
           highlights={[
-            [296, 210, 24, 4],
-            [332, 210, 24, 4],
-            [320, 222, 12, 4],
+            [302, 210, 24, 4],
+            [338, 210, 24, 4],
+            [326, 222, 12, 4],
           ]}
         />
 
@@ -217,17 +215,17 @@ export default function BookshelfDark() {
           color="#D49443"
           highlightColor="#EBC369"
           rects={[
-            [380, 210, 60, 12],
-            [428, 222, 24, 84],
-            [380, 246, 48, 12],
-            [368, 258, 24, 36],
-            [416, 282, 12, 12],
-            [380, 294, 36, 12],
+            [386, 210, 60, 12],
+            [434, 222, 24, 84],
+            [386, 246, 48, 12],
+            [374, 258, 24, 36],
+            [422, 282, 12, 12],
+            [386, 294, 36, 12],
           ]}
           highlights={[
-            [380, 210, 60, 4],
-            [380, 246, 48, 4],
-            [368, 258, 12, 4],
+            [386, 210, 60, 4],
+            [386, 246, 48, 4],
+            [374, 258, 12, 4],
           ]}
         />
 
@@ -236,17 +234,17 @@ export default function BookshelfDark() {
           color="#4B8B88"
           highlightColor="#83B3A4"
           rects={[
-            [524, 162, 24, 144],
-            [476, 210, 36, 12],
-            [512, 222, 12, 12],
-            [464, 222, 24, 72],
-            [512, 282, 12, 12],
-            [476, 294, 36, 12],
+            [546, 162, 24, 144],
+            [498, 210, 36, 12],
+            [534, 222, 12, 12],
+            [486, 222, 24, 72],
+            [534, 282, 12, 12],
+            [498, 294, 36, 12],
           ]}
           highlights={[
-            [524, 162, 24, 4],
-            [476, 210, 36, 4],
-            [464, 222, 12, 4],
+            [546, 162, 24, 4],
+            [498, 210, 36, 4],
+            [486, 222, 12, 4],
           ]}
         />
 
@@ -255,15 +253,15 @@ export default function BookshelfDark() {
           color="#C85A43"
           highlightColor="#E58962"
           rects={[
-            [560, 162, 24, 144],
-            [584, 222, 12, 12],
-            [596, 210, 36, 12],
-            [620, 222, 24, 84],
+            [598, 162, 24, 144],
+            [622, 222, 12, 12],
+            [634, 210, 36, 12],
+            [658, 222, 24, 84],
           ]}
           highlights={[
-            [560, 162, 24, 4],
-            [596, 210, 36, 4],
-            [584, 222, 12, 4],
+            [598, 162, 24, 4],
+            [634, 210, 36, 4],
+            [622, 222, 12, 4],
           ]}
         />
 
@@ -272,24 +270,29 @@ export default function BookshelfDark() {
           color="#C85A43"
           highlightColor="#E58962"
           rects={[
-            [668, 210, 60, 12],
-            [716, 222, 24, 84],
-            [668, 246, 48, 12],
-            [656, 258, 24, 36],
-            [704, 282, 12, 12],
-            [668, 294, 36, 12],
+            [722, 210, 60, 12],
+            [770, 222, 24, 84],
+            [722, 246, 48, 12],
+            [710, 258, 24, 36],
+            [758, 282, 12, 12],
+            [722, 294, 36, 12],
           ]}
           highlights={[
-            [668, 210, 60, 4],
-            [668, 246, 48, 4],
-            [656, 258, 12, 4],
+            [722, 210, 60, 4],
+            [722, 246, 48, 4],
+            [710, 258, 12, 4],
           ]}
         />
 
         {/* Clickable Desk Lamp */}
-        <g id="lamp" onClick={handleLampClick} className="cursor-pointer">
-          <title>{isLampOn ? 'Click to turn lamp off' : 'Click to turn lamp on'}</title>
-
+        <g
+          id="lamp"
+          onClick={handleLampClick}
+          onMouseEnter={() => setIsLampHovered(true)}
+          onMouseLeave={() => setIsLampHovered(false)}
+          className="cursor-pointer"
+          transform="translate(90, 0)"
+        >
           <rect x="844" y="170" width="16" height="8" fill="#2B2833" />
           <rect x="848" y="172" width="8" height="6" fill="#D49443" />
 
@@ -322,6 +325,45 @@ export default function BookshelfDark() {
           <rect x="820" y="290" width="64" height="16" fill="#2B2833" />
           <rect x="828" y="290" width="48" height="8" fill="#AC6E35" />
           <rect x="828" y="290" width="16" height="8" fill="#D49443" />
+
+          {/* Hover-only big loopy ochre arrow & note to the right of the lamp */}
+          <g
+            aria-hidden="true"
+            className="pointer-events-none transition-opacity duration-200"
+            style={{ opacity: isLampHovered ? 1 : 0 }}
+          >
+            <path
+              d="M 1030 148 C 1002 134, 982 162, 1000 180 C 1018 198, 1038 168, 1012 154 C 974 134, 922 146, 908 192"
+              stroke="#D49443"
+              strokeWidth={6}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              fill="none"
+            />
+            <path
+              d="M 900 176 L 908 194 L 924 184"
+              stroke="#D49443"
+              strokeWidth={6}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              fill="none"
+            />
+
+            <text
+              x="1132"
+              y="146"
+              fill="#D49443"
+              fontSize="74"
+              fontWeight="700"
+              fontStyle="italic"
+              transform="rotate(-8 1132 146)"
+              style={{ fontFamily: "'Caveat', 'Bradley Hand', 'Comic Sans MS', cursive" }}
+            >
+              click to
+              <tspan x="1048" dy="50">turn lamp</tspan>
+              <tspan x="1052" dy="50">{isLampOn ? 'off' : 'on'}</tspan>
+            </text>
+          </g>
         </g>
       </svg>
     </div>
