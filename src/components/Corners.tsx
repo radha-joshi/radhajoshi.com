@@ -24,7 +24,7 @@ export default function Corners({ isDark, toggleDark, toggleLang, openSpotlight,
     <div className="text-[#4f6d55] dark:text-[#869d89]">
   
       {/* Top Left */}
-      <div className="fixed top-3 left-6 w-64">
+      <div className="fixed top-1 left-6 w-52 sm:w-[360px]">
         {isDark ? <BookshelfDark /> : <BookshelfLight />}
       </div>
 
