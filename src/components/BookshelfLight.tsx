@@ -17,7 +17,7 @@ function PixelLetter({
 }) {
   return (
     <g id={id}>
-      <g stroke="#2B2833" strokeWidth={10} strokeLinejoin="miter" fill="none">
+      <g stroke="#2B2833" strokeWidth={18} strokeLinejoin="miter" fill="none">
         {rects.map(([x, y, w, h], i) => (
           <rect key={`o-${i}`} x={x} y={y} width={w} height={h} />
         ))}
@@ -80,6 +80,7 @@ function playCatPurr() {
 
 export default function BookshelfLight() {
   const [isPurring, setIsPurring] = useState(false);
+  const [isCatHovered, setIsCatHovered] = useState(false);
   const purrTimeout = useRef<number | null>(null);
 
   const bookHover =
@@ -95,7 +96,7 @@ export default function BookshelfLight() {
   return (
     <div className="w-full max-w-2xl mx-auto select-none">
       <svg
-        viewBox="0 0 1000 400"
+        viewBox="0 0 1120 400"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         shapeRendering="crispEdges"
@@ -104,33 +105,33 @@ export default function BookshelfLight() {
         aria-label="Pixel art bookshelf with books, radha, and a loafing cat"
       >
         <g id="shelf">
-          <rect x="23" y="306" width="920" height="10" fill="#2B2833" />
+          <rect x="23" y="306" width="1040" height="10" fill="#2B2833" />
           <rect x="13" y="316" width="10" height="43" fill="#2B2833" />
-          <rect x="23" y="359" width="920" height="9" fill="#2B2833" />
-          <rect x="943" y="316" width="10" height="43" fill="#2B2833" />
+          <rect x="23" y="359" width="1040" height="9" fill="#2B2833" />
+          <rect x="1063" y="316" width="10" height="43" fill="#2B2833" />
           <rect x="63" y="368" width="10" height="18" fill="#2B2833" />
-          <rect x="843" y="368" width="10" height="18" fill="#2B2833" />
+          <rect x="963" y="368" width="10" height="18" fill="#2B2833" />
           <rect x="73" y="386" width="40" height="10" fill="#2B2833" />
-          <rect x="853" y="386" width="40" height="10" fill="#2B2833" />
+          <rect x="973" y="386" width="40" height="10" fill="#2B2833" />
           <rect x="113" y="368" width="10" height="18" fill="#2B2833" />
-          <rect x="893" y="368" width="10" height="18" fill="#2B2833" />
-          <rect x="23" y="315" width="920" height="44" fill="#9C5F30" />
-          <rect x="23" y="315" width="920" height="4" fill="#C58C63" />
-          <rect x="23" y="350" width="920" height="9" fill="#7D4822" />
-          <rect x="733" y="333" width="125" height="5" fill="#7D4822" />
-          <rect x="668" y="333" width="25" height="5" fill="#7D4822" />
-          <rect x="853" y="328" width="90" height="5" fill="#7D4822" />
+          <rect x="1013" y="368" width="10" height="18" fill="#2B2833" />
+          <rect x="23" y="315" width="1040" height="44" fill="#9C5F30" />
+          <rect x="23" y="315" width="1040" height="4" fill="#C58C63" />
+          <rect x="23" y="350" width="1040" height="9" fill="#7D4822" />
+          <rect x="853" y="333" width="125" height="5" fill="#7D4822" />
+          <rect x="788" y="333" width="25" height="5" fill="#7D4822" />
+          <rect x="973" y="328" width="90" height="5" fill="#7D4822" />
           <rect x="23" y="329" width="200" height="5" fill="#7D4822" />
           <rect x="223" y="334" width="114" height="5" fill="#7D4822" />
           <rect x="355" y="334" width="20" height="5" fill="#7D4822" />
-          <rect x="693" y="333" width="8" height="5" fill="#8D5429" />
+          <rect x="813" y="333" width="8" height="5" fill="#8D5429" />
           <rect x="348" y="334" width="7" height="5" fill="#8D5429" />
           <rect x="73" y="366" width="40" height="20" fill="#9C5F30" />
           <rect x="73" y="366" width="40" height="11" fill="#7D4822" />
           <rect x="106" y="376" width="7" height="10" fill="#8D5429" />
-          <rect x="853" y="366" width="40" height="20" fill="#9C5F30" />
-          <rect x="853" y="366" width="40" height="10" fill="#7D4822" />
-          <rect x="888" y="376" width="5" height="10" fill="#7D4822" />
+          <rect x="973" y="366" width="40" height="20" fill="#9C5F30" />
+          <rect x="973" y="366" width="40" height="10" fill="#7D4822" />
+          <rect x="1008" y="376" width="5" height="10" fill="#7D4822" />
         </g>
 
         <g id="ochre-book" className={bookHover}>
@@ -208,14 +209,14 @@ export default function BookshelfLight() {
           color="#D49443"
           highlightColor="#EBC369"
           rects={[
-            [296, 210, 24, 96],
-            [320, 222, 12, 12],
-            [332, 210, 24, 24],
+            [302, 210, 24, 96],
+            [326, 222, 12, 12],
+            [338, 210, 24, 24],
           ]}
           highlights={[
-            [296, 210, 24, 4],
-            [332, 210, 24, 4],
-            [320, 222, 12, 4],
+            [302, 210, 24, 4],
+            [338, 210, 24, 4],
+            [326, 222, 12, 4],
           ]}
         />
 
@@ -224,17 +225,17 @@ export default function BookshelfLight() {
           color="#D49443"
           highlightColor="#EBC369"
           rects={[
-            [380, 210, 60, 12],
-            [428, 222, 24, 84],
-            [380, 246, 48, 12],
-            [368, 258, 24, 36],
-            [416, 282, 12, 12],
-            [380, 294, 36, 12],
+            [386, 210, 60, 12],
+            [434, 222, 24, 84],
+            [386, 246, 48, 12],
+            [374, 258, 24, 36],
+            [422, 282, 12, 12],
+            [386, 294, 36, 12],
           ]}
           highlights={[
-            [380, 210, 60, 4],
-            [380, 246, 48, 4],
-            [368, 258, 12, 4],
+            [386, 210, 60, 4],
+            [386, 246, 48, 4],
+            [374, 258, 12, 4],
           ]}
         />
 
@@ -243,17 +244,17 @@ export default function BookshelfLight() {
           color="#4B8B88"
           highlightColor="#83B3A4"
           rects={[
-            [524, 162, 24, 144],
-            [476, 210, 36, 12],
-            [512, 222, 12, 12],
-            [464, 222, 24, 72],
-            [512, 282, 12, 12],
-            [476, 294, 36, 12],
+            [546, 162, 24, 144],
+            [498, 210, 36, 12],
+            [534, 222, 12, 12],
+            [486, 222, 24, 72],
+            [534, 282, 12, 12],
+            [498, 294, 36, 12],
           ]}
           highlights={[
-            [524, 162, 24, 4],
-            [476, 210, 36, 4],
-            [464, 222, 12, 4],
+            [546, 162, 24, 4],
+            [498, 210, 36, 4],
+            [486, 222, 12, 4],
           ]}
         />
 
@@ -262,15 +263,15 @@ export default function BookshelfLight() {
           color="#C85A43"
           highlightColor="#E58962"
           rects={[
-            [560, 162, 24, 144],
-            [584, 222, 12, 12],
-            [596, 210, 36, 12],
-            [620, 222, 24, 84],
+            [598, 162, 24, 144],
+            [622, 222, 12, 12],
+            [634, 210, 36, 12],
+            [658, 222, 24, 84],
           ]}
           highlights={[
-            [560, 162, 24, 4],
-            [596, 210, 36, 4],
-            [584, 222, 12, 4],
+            [598, 162, 24, 4],
+            [634, 210, 36, 4],
+            [622, 222, 12, 4],
           ]}
         />
 
@@ -279,17 +280,17 @@ export default function BookshelfLight() {
           color="#C85A43"
           highlightColor="#E58962"
           rects={[
-            [668, 210, 60, 12],
-            [716, 222, 24, 84],
-            [668, 246, 48, 12],
-            [656, 258, 24, 36],
-            [704, 282, 12, 12],
-            [668, 294, 36, 12],
+            [722, 210, 60, 12],
+            [770, 222, 24, 84],
+            [722, 246, 48, 12],
+            [710, 258, 24, 36],
+            [758, 282, 12, 12],
+            [722, 294, 36, 12],
           ]}
           highlights={[
-            [668, 210, 60, 4],
-            [668, 246, 48, 4],
-            [656, 258, 12, 4],
+            [722, 210, 60, 4],
+            [722, 246, 48, 4],
+            [710, 258, 12, 4],
           ]}
         />
 
@@ -297,99 +298,152 @@ export default function BookshelfLight() {
         <g
           id="cat"
           onClick={handleCatClick}
+          onMouseEnter={() => setIsCatHovered(true)}
+          onMouseLeave={() => setIsCatHovered(false)}
           className={`cursor-pointer transition-transform duration-150 ${
             isPurring ? '-translate-y-1' : 'hover:-translate-y-0.5'
           }`}
         >
-          <title>Click to pet him</title>
+          <g transform="translate(937, 306) scale(1.8) translate(-850, -306)">
 
-          <g transform="translate(850, 306) scale(1.5) translate(-850, -306)">
-          
-         
-          {/* Floating pixel heart when purring */}
-          {isPurring && (
-            <g id="cat-heart">
-              <rect x="815" y="200" width="5" height="5" fill="#C85A43" />
-              <rect x="825" y="200" width="5" height="5" fill="#C85A43" />
-              <rect x="810" y="205" width="25" height="5" fill="#C85A43" />
-              <rect x="815" y="210" width="15" height="5" fill="#C85A43" />
-              <rect x="820" y="215" width="5" height="5" fill="#C85A43" />
-              <rect x="815" y="205" width="5" height="2" fill="#E58962" />
-            </g>
-          )}
+            {/* Floating pixel "purrr" when purring */}
+            {isPurring && (
+              <g id="cat-purrr" fill="#2B2833">
+                {/* p */}
+                <rect x="782" y="213" width="3" height="15" />
+                <rect x="785" y="213" width="6" height="3" />
+                <rect x="791" y="216" width="3" height="6" />
+                <rect x="785" y="222" width="6" height="3" />
 
-          {/* Outer charcoal silhouette */}
-          <rect x="800" y="236" width="5" height="5" fill="#2B2833" />
-          <rect x="840" y="236" width="5" height="5" fill="#2B2833" />
-          <rect x="795" y="241" width="15" height="5" fill="#2B2833" />
-          <rect x="835" y="241" width="15" height="5" fill="#2B2833" />
-          <rect x="795" y="246" width="20" height="5" fill="#2B2833" />
-          <rect x="830" y="246" width="20" height="5" fill="#2B2833" />
-          <rect x="795" y="251" width="90" height="5" fill="#2B2833" />
-          <rect x="795" y="256" width="95" height="5" fill="#2B2833" />
-          <rect x="790" y="261" width="105" height="10" fill="#2B2833" />
-          <rect x="790" y="271" width="110" height="10" fill="#2B2833" />
-          <rect x="795" y="281" width="115" height="5" fill="#2B2833" />
-          <rect x="800" y="286" width="110" height="5" fill="#2B2833" />
-          <rect x="800" y="291" width="110" height="15" fill="#2B2833" />
+                {/* u */}
+                <rect x="798" y="216" width="3" height="9" />
+                <rect x="807" y="216" width="3" height="9" />
+                <rect x="801" y="222" width="6" height="3" />
 
-          {/* Ears (light orange left, warm orange right, pink inner) */}
-          <rect x="800" y="241" width="5" height="5" fill="#F0B665" />
-          <rect x="840" y="241" width="5" height="5" fill="#D49443" />
-          <rect x="800" y="246" width="5" height="5" fill="#E8A298" />
-          <rect x="805" y="246" width="5" height="5" fill="#F0B665" />
-          <rect x="835" y="246" width="5" height="5" fill="#D49443" />
-          <rect x="840" y="246" width="5" height="5" fill="#E8A298" />
+                {/* r */}
+                <rect x="814" y="216" width="3" height="9" />
+                <rect x="817" y="216" width="6" height="3" />
 
-          {/* Head base (cream-white) */}
-          <rect x="800" y="251" width="45" height="5" fill="#FDFBF7" />
-          <rect x="795" y="256" width="55" height="25" fill="#FDFBF7" />
-          <rect x="800" y="281" width="45" height="5" fill="#FDFBF7" />
-          <rect x="805" y="286" width="35" height="5" fill="#FDFBF7" />
+                {/* r */}
+                <rect x="827" y="216" width="3" height="9" />
+                <rect x="830" y="216" width="6" height="3" />
 
-          {/* Head spots: light orange on left, warm orange on right */}
-          <rect x="800" y="251" width="15" height="5" fill="#F0B665" />
-          <rect x="795" y="256" width="20" height="15" fill="#F0B665" />
-          <rect x="795" y="271" width="10" height="5" fill="#F0B665" />
+                {/* r */}
+                <rect x="840" y="216" width="3" height="9" />
+                <rect x="843" y="216" width="6" height="3" />
+              </g>
+            )}
 
-          <rect x="830" y="251" width="15" height="5" fill="#D49443" />
-          <rect x="825" y="256" width="25" height="10" fill="#D49443" />
-          <rect x="835" y="266" width="15" height="15" fill="#D49443" />
+            {/* Outer charcoal silhouette */}
+            <rect x="800" y="236" width="5" height="5" fill="#2B2833" />
+            <rect x="840" y="236" width="5" height="5" fill="#2B2833" />
+            <rect x="795" y="241" width="15" height="5" fill="#2B2833" />
+            <rect x="835" y="241" width="15" height="5" fill="#2B2833" />
+            <rect x="795" y="246" width="20" height="5" fill="#2B2833" />
+            <rect x="830" y="246" width="20" height="5" fill="#2B2833" />
+            <rect x="795" y="251" width="90" height="5" fill="#2B2833" />
+            <rect x="795" y="256" width="95" height="5" fill="#2B2833" />
+            <rect x="790" y="261" width="105" height="10" fill="#2B2833" />
+            <rect x="790" y="271" width="110" height="10" fill="#2B2833" />
+            <rect x="795" y="281" width="115" height="5" fill="#2B2833" />
+            <rect x="800" y="286" width="110" height="5" fill="#2B2833" />
+            <rect x="800" y="291" width="110" height="15" fill="#2B2833" />
 
-          {/* Sleepy eyes & pink nose */}
-          <rect x="800" y="266" width="10" height="5" fill="#2B2833" />
-          <rect x="830" y="266" width="10" height="5" fill="#2B2833" />
-          <rect x="820" y="271" width="5" height="5" fill="#E8A298" />
-          {isPurring && (
-            <>
-              <rect x="795" y="271" width="5" height="5" fill="#E8A298" />
-              <rect x="840" y="271" width="5" height="5" fill="#E8A298" />
-            </>
-          )}
+            {/* Ears (light orange left, warm orange right, pink inner) */}
+            <rect x="800" y="241" width="5" height="5" fill="#F0B665" />
+            <rect x="840" y="241" width="5" height="5" fill="#D49443" />
+            <rect x="800" y="246" width="5" height="5" fill="#E8A298" />
+            <rect x="805" y="246" width="5" height="5" fill="#F0B665" />
+            <rect x="835" y="246" width="5" height="5" fill="#D49443" />
+            <rect x="840" y="246" width="5" height="5" fill="#E8A298" />
 
-          {/* Soft chin shadow & tucked front paws */}
-          <rect x="810" y="291" width="25" height="5" fill="#8E8B92" />
-          <rect x="805" y="296" width="15" height="10" fill="#FDFBF7" />
-          <rect x="825" y="296" width="20" height="10" fill="#FDFBF7" />
-          <rect x="820" y="296" width="5" height="10" fill="#2B2833" />
+            {/* Head base (cream-white) */}
+            <rect x="800" y="251" width="45" height="5" fill="#FDFBF7" />
+            <rect x="795" y="256" width="55" height="25" fill="#FDFBF7" />
+            <rect x="800" y="281" width="45" height="5" fill="#FDFBF7" />
+            <rect x="805" y="286" width="35" height="5" fill="#FDFBF7" />
 
-          {/* Loafing body base (cream-white) */}
-          <rect x="850" y="256" width="35" height="40" fill="#FDFBF7" />
-          <rect x="885" y="266" width="10" height="30" fill="#FDFBF7" />
-          <rect x="850" y="296" width="55" height="10" fill="#FDFBF7" />
+            {/* Head spots: light orange on left, warm orange on right */}
+            <rect x="800" y="251" width="15" height="5" fill="#F0B665" />
+            <rect x="795" y="256" width="20" height="15" fill="#F0B665" />
+            <rect x="795" y="271" width="10" height="5" fill="#F0B665" />
 
-          {/* Back spots (light orange + warm orange matching reference) */}
-          <rect x="855" y="256" width="10" height="10" fill="#F0B665" />
-          <rect x="865" y="256" width="15" height="25" fill="#D49443" />
-          <rect x="880" y="261" width="10" height="15" fill="#F0B665" />
+            <rect x="830" y="251" width="15" height="5" fill="#D49443" />
+            <rect x="825" y="256" width="25" height="10" fill="#D49443" />
+            <rect x="835" y="266" width="15" height="15" fill="#D49443" />
 
-          {/* Hind leg & curled striped tail */}
-          <rect x="855" y="296" width="20" height="10" fill="#D49443" />
-          <rect x="885" y="281" width="10" height="5" fill="#2B2833" />
-          <rect x="895" y="281" width="10" height="10" fill="#D49443" />
-          <rect x="890" y="286" width="10" height="5" fill="#FDFBF7" />
-          <rect x="895" y="291" width="10" height="5" fill="#FDFBF7" />
-          <rect x="885" y="296" width="10" height="10" fill="#D49443" />
+            {/* Sleepy eyes & pink nose */}
+            <rect x="800" y="266" width="10" height="5" fill="#2B2833" />
+            <rect x="830" y="266" width="10" height="5" fill="#2B2833" />
+            <rect x="820" y="271" width="5" height="5" fill="#E8A298" />
+            {isPurring && (
+              <>
+                <rect x="795" y="271" width="5" height="5" fill="#E8A298" />
+                <rect x="840" y="271" width="5" height="5" fill="#E8A298" />
+              </>
+            )}
+
+            {/* Soft chin shadow & tucked front paws */}
+            <rect x="810" y="291" width="25" height="5" fill="#8E8B92" />
+            <rect x="805" y="296" width="15" height="10" fill="#FDFBF7" />
+            <rect x="825" y="296" width="20" height="10" fill="#FDFBF7" />
+            <rect x="820" y="296" width="5" height="10" fill="#2B2833" />
+
+            {/* Loafing body base (cream-white) */}
+            <rect x="850" y="256" width="35" height="40" fill="#FDFBF7" />
+            <rect x="885" y="266" width="10" height="30" fill="#FDFBF7" />
+            <rect x="850" y="296" width="55" height="10" fill="#FDFBF7" />
+
+            {/* Back spots (light orange + warm orange matching reference) */}
+            <rect x="855" y="256" width="10" height="10" fill="#F0B665" />
+            <rect x="865" y="256" width="15" height="25" fill="#D49443" />
+            <rect x="880" y="261" width="10" height="15" fill="#F0B665" />
+
+            {/* Hind leg & curled striped tail */}
+            <rect x="855" y="296" width="20" height="10" fill="#D49443" />
+            <rect x="885" y="281" width="10" height="5" fill="#2B2833" />
+            <rect x="895" y="281" width="10" height="10" fill="#D49443" />
+            <rect x="890" y="286" width="10" height="5" fill="#FDFBF7" />
+            <rect x="895" y="291" width="10" height="5" fill="#FDFBF7" />
+            <rect x="885" y="296" width="10" height="10" fill="#D49443" />
+          </g>
+
+          {/* Hover-only big legible note to the right of the cat with a loopy arrow */}
+          <g
+            aria-hidden="true"
+            className="pointer-events-none transition-opacity duration-200"
+            style={{ opacity: isCatHovered ? 1 : 0 }}
+          >
+            <path
+              d="M 1120 186 C 1092 170, 1072 198, 1090 216 C 1108 234, 1128 204, 1102 190 C 1070 174, 1049 180, 1041 215"
+              stroke="#D49443"
+              strokeWidth={6}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              fill="none"
+            />
+            <path
+              d="M 1032 200 L 1041 217 L 1057 207"
+              stroke="#D49443"
+              strokeWidth={6}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              fill="none"
+            />
+
+            <text
+              x="1132"
+              y="146"
+              fill="#D49443"
+              fontSize="74"
+              fontWeight="700"
+              fontStyle="italic"
+              transform="rotate(-8 1132 146)"
+              style={{ fontFamily: "'Caveat', 'Bradley Hand', 'Comic Sans MS', cursive" }}
+            >
+              click to
+              <tspan x="1136" dy="64">pet him</tspan>
+            </text>
           </g>
         </g>
       </svg>
