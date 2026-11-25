@@ -2,7 +2,6 @@ import { useState } from 'react';
 import Corners from './components/Corners';
 import Spotlight from './components/Spotlight';
 
-
 export default function App() {
   const [isDark, setIsDark] = useState(false);
   const [Lang, setLang] = useState('en');
