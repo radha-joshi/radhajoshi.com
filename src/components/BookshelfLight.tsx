@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import OchreWindow from './OchreWindow';
+import { useSound } from '../context/SoundContext';
 
 type RectDef = [number, number, number, number];
 
@@ -37,68 +38,28 @@ function PixelLetter({
   );
 }
 
-function playCatPurr() {
-  const audio = new Audio('/sounds/cat-purr.mp3');
-  audio.volume = 0.6;
-  audio.play().catch(() => {
-    const AudioCtx =
-      window.AudioContext ||
-      (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
-    if (!AudioCtx) return;
-    const ctx = new AudioCtx();
-    const now = ctx.currentTime;
-
-    const osc = ctx.createOscillator();
-    const lfo = ctx.createOscillator();
-    const lfoGain = ctx.createGain();
-    const gain = ctx.createGain();
-    const filter = ctx.createBiquadFilter();
-
-    osc.type = 'sawtooth';
-    osc.frequency.setValueAtTime(28, now);
-    lfo.type = 'sine';
-    lfo.frequency.setValueAtTime(18, now);
-    lfoGain.gain.setValueAtTime(8, now);
-    filter.type = 'lowpass';
-    filter.frequency.setValueAtTime(120, now);
-
-    gain.gain.setValueAtTime(0.001, now);
-    gain.gain.linearRampToValueAtTime(0.18, now + 0.2);
-    gain.gain.exponentialRampToValueAtTime(0.001, now + 1.2);
-
-    lfo.connect(lfoGain);
-    lfoGain.connect(osc.frequency);
-    osc.connect(filter);
-    filter.connect(gain);
-    gain.connect(ctx.destination);
-
-    osc.start(now);
-    lfo.start(now);
-    osc.stop(now + 1.25);
-    lfo.stop(now + 1.25);
-  });
-}
-
 export default function BookshelfLight() {
   const [isPurring, setIsPurring] = useState(false);
   const [isCatHovered, setIsCatHovered] = useState(false);
   const purrTimeout = useRef<number | null>(null);
   const [isOchrePressed, setIsOchrePressed] = useState(false);
   const [isOchreWindowOpen, setIsOchreWindowOpen] = useState(false);
+  const { playSound } = useSound();
 
   const handleOchreBookClick = () => {
-  setIsOchrePressed(true);
-  window.setTimeout(() => {
-    setIsOchrePressed(false);
-    setIsOchreWindowOpen(true);
-  }, 160);
+    setIsOchrePressed(true);
+    playSound('window-open', 0.45);
+    window.setTimeout(() => {
+      setIsOchrePressed(false);
+      setIsOchreWindowOpen(true);
+    }, 160);
   };
 
   const bookHover =
     'cursor-pointer transition-transform duration-150 ease-out hover:-translate-y-3';
 
   const handleCatClick = () => {
-    playCatPurr();
+    playSound('cat-purr', 0.6);
     setIsPurring(true);
     if (purrTimeout.current) window.clearTimeout(purrTimeout.current);
     purrTimeout.current = window.setTimeout(() => setIsPurring(false), 1300);
@@ -147,6 +108,7 @@ export default function BookshelfLight() {
 
         <g
           id="ochre-book"
+          onMouseEnter={() => playSound('book-hop', 0.35)}
           onClick={handleOchreBookClick}
           style={{ transformBox: 'fill-box', transformOrigin: 'bottom center' }}
           className={`cursor-pointer transition-transform duration-150 ease-out ${
@@ -325,7 +287,6 @@ export default function BookshelfLight() {
           }`}
         >
           <g transform="translate(937, 306) scale(1.8) translate(-850, -306)">
-
             {/* Floating pixel "purrr" when purring */}
             {isPurring && (
               <g id="cat-purrr" fill="#2B2833">
