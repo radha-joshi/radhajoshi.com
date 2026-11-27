@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, ReactNode } from 'react';
+import { useSound } from '../context/SoundContext';
 
 interface OchreWindowProps {
   isOpen: boolean;
@@ -16,6 +17,7 @@ export default function OchreWindow({
   const [size, setSize] = useState({ width: 380, height: 260 });
   const [pos, setPos] = useState<{ x: number; y: number } | null>(null);
   const [isClosingPulse, setIsClosingPulse] = useState(false);
+  const { playSound } = useSound();
 
   const timersRef = useRef<number[]>([]);
   const actionRef = useRef<{
@@ -51,6 +53,7 @@ export default function OchreWindow({
     if (isClosingPulse) return;
 
     setIsClosingPulse(true);
+    playSound('window-close', 0.45);
 
     // 1) Shrink down for ~90ms, 2) bounce back to original size, 3) close after a fraction of a second
     const restoreTimer = window.setTimeout(() => {
