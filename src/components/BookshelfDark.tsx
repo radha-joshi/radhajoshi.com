@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import OchreWindow from './OchreWindow';
+import { useSound } from '../context/SoundContext';
 
 type RectDef = [number, number, number, number];
 
@@ -37,41 +38,20 @@ function PixelLetter({
   );
 }
 
-function playLampClick(turningOn: boolean) {
-  const AudioCtx =
-    window.AudioContext ||
-    (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
-  if (!AudioCtx) return;
-  const ctx = new AudioCtx();
-  const now = ctx.currentTime;
-
-  const osc = ctx.createOscillator();
-  const gain = ctx.createGain();
-  osc.type = 'triangle';
-  osc.frequency.setValueAtTime(turningOn ? 900 : 650, now);
-  osc.frequency.exponentialRampToValueAtTime(140, now + 0.035);
-
-  gain.gain.setValueAtTime(0.22, now);
-  gain.gain.exponentialRampToValueAtTime(0.001, now + 0.04);
-
-  osc.connect(gain);
-  gain.connect(ctx.destination);
-  osc.start(now);
-  osc.stop(now + 0.045);
-}
-
 export default function BookshelfDark() {
   const [isLampOn, setIsLampOn] = useState(true);
   const [isLampHovered, setIsLampHovered] = useState(false);
   const [isOchrePressed, setIsOchrePressed] = useState(false);
   const [isOchreWindowOpen, setIsOchreWindowOpen] = useState(false);
+  const { playSound } = useSound();
 
   const handleOchreBookClick = () => {
-  setIsOchrePressed(true);
-  window.setTimeout(() => {
-    setIsOchrePressed(false);
-    setIsOchreWindowOpen(true);
-  }, 160);
+    setIsOchrePressed(true);
+    playSound('window-open', 0.45);
+    window.setTimeout(() => {
+      setIsOchrePressed(false);
+      setIsOchreWindowOpen(true);
+    }, 160);
   };
 
   const bookHover =
@@ -80,7 +60,7 @@ export default function BookshelfDark() {
   const handleLampClick = () => {
     const next = !isLampOn;
     setIsLampOn(next);
-    playLampClick(next);
+    playSound(next ? 'lamp-on' : 'lamp-off', 0.6);
   };
 
   return (
@@ -137,6 +117,7 @@ export default function BookshelfDark() {
 
         <g
           id="ochre-book"
+          onMouseEnter={() => playSound('book-hop', 0.35)}
           onClick={handleOchreBookClick}
           style={{ transformBox: 'fill-box', transformOrigin: 'bottom center' }}
           className={`cursor-pointer transition-transform duration-150 ease-out ${
